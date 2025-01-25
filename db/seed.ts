@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import sampleData from './sample-data';
-import { hashSync } from 'bcryptjs';
+import { hashSync } from 'bcrypt-ts-edge';
 
 async function main() {
   const prisma = new PrismaClient();

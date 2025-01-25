@@ -3,7 +3,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
 import { prisma } from './db/prisma';
-import { compareSync } from 'bcryptjs';
+import { compareSync } from 'bcrypt-ts-edge';
 import type { NextAuthConfig } from 'next-auth';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';

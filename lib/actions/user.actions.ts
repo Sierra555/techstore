@@ -3,7 +3,7 @@
 import { shippingAddressSchema, SignInFormSchema, SignUpFormSchema, updateProfileSchema } from '@/schema/validators';
 import { auth, signIn, signOut } from '@/auth';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
-import { hashSync } from 'bcryptjs';
+import { hashSync } from 'bcrypt-ts-edge';
 import { prisma } from '@/db/prisma';
 import { formatError } from '../utils';
 import { ShippingAddress } from '@/types';
