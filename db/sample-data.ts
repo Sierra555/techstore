@@ -58,7 +58,7 @@ const sampleData = {
           '/images/products/airpods-pro-2nd-generation.png',
         ],
         price: 699.95,
-        brand: 'Tommy Hilfiger',
+        brand: 'Apple Inc.',
         rating: 4.9,
         numReviews: 3,
         stock: 0,

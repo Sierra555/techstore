@@ -1,10 +1,10 @@
 import { getProductBySlug } from '@/lib/actions/product.actions';
 import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge'; 
-import { Button } from '@/components/ui/button'; 
 import { Card, CardContent } from '@/components/ui/card'; 
 import ProductImages from '@/components/shared/product/product-images';
-
+import AddToCart from '@/components/shared/product/add-to-cart';
+import { getMyCart } from '@/lib/actions/cart.actions';
 
 type ProductPageParam = {
     params: Promise<{slug: string}>
@@ -15,6 +15,8 @@ const ProductPage = async ({ params } : ProductPageParam) => {
     const product = await getProductBySlug(slug);
 
     if (!product) notFound();
+
+    const cart = await getMyCart();
 
   return (
     <section>
@@ -38,21 +40,33 @@ const ProductPage = async ({ params } : ProductPageParam) => {
                     <p>{product.description}</p>
                 </div>
             </div>
-            <div className="p-5">
+            <div className="col-span-3 md:col-span-2 lg:col-span-1 p-5">
                 <Card>
                     <CardContent className='p-4'>
-                        <div className="mb-2 flex gap-3 sm:justify-between">
+                        <div className="mb-2 flex gap-3 justify-between">
                             <p>Price</p>
                             <p>${product.price}</p>
                         </div>
-                        <div className="mb-2 flex gap-3 sm:justify-between">
+                        <div className="mb-2 flex gap-3 justify-between">
                             <p>Stock</p>
                             {product.stock > 0 ? (
                                 <Badge variant='outline'>In stock</Badge>
                                 ) : (
                                 <Badge variant='destructive'>Out of stock</Badge>) }
                         </div>
-                        <Button className="w-full" disabled={!(product.stock > 0)}>Add To Cart</Button>
+                        <AddToCart 
+                            cart={cart}
+                            item={{
+                                productId: product.id,
+                                name: product.name,
+                                slug: product.slug,
+                                category: product.category,
+                                image: product.images![0],
+                                qty: 1,
+                                price: product.price
+                            }} 
+                            isInStock={+product.stock > 0}
+                        />
                     </CardContent>
                 </Card>
             </div>

@@ -29,6 +29,14 @@
   .h3-bold {
     @apply font-bold text-xl lg:text-2xl;
   }
+
+  .h4-bold {
+    @apply font-bold text-sm lg:text-lg;
+  }
+
+  .section { 
+    @apply space-y-10 mb-10;
+  }
 }
 
 @layer base {
@@ -97,7 +105,12 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
   }
 }
