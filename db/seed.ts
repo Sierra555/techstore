@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import sampleData from './sample-data';
-import { hashSync } from 'bcrypt-ts-edge';
+import { hash } from '@/lib/encrypt';
 
 async function main() {
   const prisma = new PrismaClient();
@@ -14,10 +14,10 @@ async function main() {
       data: sampleData.products
   });
 
-  const users = sampleData.users.map((item) => ({
+  const users = await Promise.all(sampleData.users.map(async (item) => ({
       ...item,
-      password: hashSync(item.password, 10),
-  }));
+      password: await hash(item.password),
+  })));
   
   await prisma.user.createMany({
       data: users
