@@ -1,5 +1,4 @@
 import { Card, CardContent } from './ui/card';
-import Image from "next/image";
 import { benefits } from '@/lib/constansts';
 
 const IconBoxes = () => {
@@ -8,8 +7,8 @@ const IconBoxes = () => {
         <Card>
             <CardContent className="flex justify-between items-center gap-5 p-5">
                 {benefits.map((item) => (
-                    <div key={item.title}>
-                        <Image className="mb-3" src={item.icon} width={25} height={45} alt='Shipping icon' aria-hidden='true' />
+                    <div key={item.title} className='space-y-2'>
+                        <item.icon className="w-5 h-5 text-primary" />
                         <h4 className="h4-bold">{item.title}</h4>
                         <p className="text-xs">{item.description}</p>
                     </div>

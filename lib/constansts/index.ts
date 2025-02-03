@@ -2,32 +2,32 @@ export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Tech Store';
 export const APP_DESCRIPTION = process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Find your device';
 export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
 export const LATEST_PRODUCTS_LIMIT = Number(process.env.LATEST_PRODUCTS_LIMIT || 4);
+import { DollarSign, Headset, LucideIcon, ShoppingBag, WalletCards } from 'lucide-react';
 
-export type benefits = {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    icon: any,
+export type Benefit = {
+    icon: LucideIcon,
     title: string,
     description: string,
 }
 
-export const benefits = [
+export const benefits: Benefit[] = [
     {
-        icon: '/assets/icons/shipping.svg',
+        icon: ShoppingBag,
         title: 'Free Shipping',
         description: 'Free shipping for order above $150',
     },
     {
-        icon: '/assets/icons/support.svg',
+        icon: Headset,
         title: 'Money Back Guarantee',
         description: 'Within 30 days of purchase',
     },
     {
-        icon: '/assets/icons/payment.svg',
+        icon: WalletCards,
         title: 'Online Support',
         description: '24 hours a day, 7 days a week',
     },
     {
-        icon: '/assets/icons/dollar.svg',
+        icon: DollarSign,
         title: 'Flexible Payment',
         description: 'Pay with multiple payment cards',
     },
