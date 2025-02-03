@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { InsertProductSchema, insertCartSchema, cartItemSchema, shippingAddressSchema, insertOrderSchema, insertOrderItemSchema, paymentResultSchema } from "@/schema/validators";
+import { insertProductSchema, insertCartSchema, cartItemSchema, shippingAddressSchema, insertOrderSchema, insertOrderItemSchema, paymentResultSchema, insertReviewSchema } from "@/tests/schema/validators";
 
-export type Product = z.infer<typeof InsertProductSchema> & {
+export type Product = z.infer<typeof insertProductSchema> & {
     id: string;
     rating: string;
     numReviews: number;
@@ -23,6 +23,14 @@ export type Order = z.infer<typeof insertOrderSchema> & {
     deliveredAt: Date | null;
     orderItems: OrderItem[];
     user: { name: string; email: string };
+    paymentResult: PaymentResult;
 };
 
 export type PaymentResult = z.infer<typeof paymentResultSchema>;
+
+export type Review = z.infer<typeof insertReviewSchema> & {
+    id: string;
+    user?: { name: string };
+    createdAt: Date;
+    isVerifiedPurchase: boolean;
+};

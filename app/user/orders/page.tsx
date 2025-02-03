@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Pagination from '@/components/shared/pagination';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'My orders'
@@ -45,9 +46,11 @@ const OrderPage = async ({ searchParams }: OrderPageParams ) => {
                   <TableCell>{order.isPaid && order.paidAt ? formatDateTime(order.paidAt).dateTime : 'Not paid'}</TableCell>
                   <TableCell>{order.isDelivered && order.deliveredAt ?  formatDateTime(order.deliveredAt).dateTime : 'Not delivered'}</TableCell>
                   <TableCell>
-                    <Link href={`/order/${order.id}`}> 
-                      <span className="px-2">Details</span>
-                    </Link>
+                    <Button asChild variant='outline' size='sm'>
+                      <Link href={`/order/${order.id}`}> 
+                        Details
+                      </Link>
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}

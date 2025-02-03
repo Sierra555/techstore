@@ -2,15 +2,21 @@ import { APP_NAME } from "@/lib/constansts";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./menu";
+import CategoryDrawer from "./category-drawer";
+import Search from "./search";
 
 const Header = async () => {
   return (
     <header className="w-full border-b shadow-sm">
         <div className="wrapper flex-between">
-            <div>
+            <div className="flex-start">
+                <div className="block md:hidden">
+                    <CategoryDrawer />
+                </div>
                 <Link 
                     href='/'
                     aria-label="Go to the main page"
+                    className="ml-4"
                  >
                     <Image 
                         className="hidden md:block dark:hidden"
@@ -37,6 +43,9 @@ const Header = async () => {
                         priority={true}
                     />
                 </Link>
+            </div>
+            <div className="hidden md:block">
+                <Search />
             </div>
             <Menu />
         </div> 

@@ -2,7 +2,7 @@
 
 import { DEFAULT_PAYMENT_METHOD, PAYMENT_METHODS } from "@/lib/constansts";
 import { useToast } from "@/hooks/use-toast";
-import { paymentMethodSchema } from "@/schema/validators";
+import { paymentMethodSchema } from "@/tests/schema/validators";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -41,7 +41,8 @@ const PaymentMethodForm = ({ prefferedPaymentMethod }:
 
           router.push('/place-order');
       });
-    }
+    };
+    
   return (
     <>
     <div className="max-w-md mx-auto space-y-4">

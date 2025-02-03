@@ -5,7 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { updateUserProfile } from "@/lib/actions/user.actions";
-import { updateProfileSchema } from "@/schema/validators";
+import { updateProfileSchema } from "@/tests/schema/validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import { ControllerRenderProps, SubmitHandler, useForm } from "react-hook-form";
@@ -14,6 +14,7 @@ import { z } from "zod";
 
 const ProfileForm = () => {
   const { data: session, update } = useSession();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof updateProfileSchema>>({
     resolver: zodResolver(updateProfileSchema),
@@ -48,8 +49,7 @@ const ProfileForm = () => {
       description: res.message,
     });
   };
-
-  const { toast } = useToast();
+  
   return (
     <Form {...form}>
       <form method='POST' onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">

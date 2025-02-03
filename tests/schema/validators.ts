@@ -8,7 +8,7 @@ const currency = z
     'Price must have two decimal places'
 );
 
-export const InsertProductSchema = z.object({
+export const insertProductSchema = z.object({
     name: z.string().min(3, 'Name must be at least 3 characters'),
     description: z.string().min(3, 'Description must be at least 3 characters'),
     slug: z.string().min(3, 'Slug must be at least 3 characters'),
@@ -22,12 +22,16 @@ export const InsertProductSchema = z.object({
     price: currency,
 });
 
-export const SignInFormSchema = z.object({
+export const updateProductSchema = insertProductSchema.extend({
+    id: z.string().min(1, 'Id is required'),
+})
+
+export const signInFormSchema = z.object({
     email: z.string().email('Invalid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
-export const SignUpFormSchema = z.object({
+export const signUpFormSchema = z.object({
     name: z.string().min(2, 'name must be at least 2 characters'),
     email: z.string().email('Invalid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
@@ -106,4 +110,17 @@ export const paymentResultSchema = z.object({
 export const updateProfileSchema = z.object({
     name: z.string().min(3, 'Name should have at least 3 characters'),
     email: z.string().email(),
+});
+
+export const updateUserSchema = updateProfileSchema.extend({
+    id: z.string().min(1, 'Id is required'),
+    role: z.string().min(1, 'Role is required'),
+});
+
+export const insertReviewSchema = z.object({
+    title: z.string().min(3, 'Title must be at least 3 charcters'),
+    description: z.string().min(3, 'Title must be at least 3 charcters'),
+    productId: z.string().min(1, 'Product is required'),
+    userId: z.string().min(1, 'User is required'),
+    rating: z.coerce.number().int().min(1, 'Rating must be at least 1').max(5,'Rating must be at most 5'),
 })

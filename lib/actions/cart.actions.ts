@@ -6,7 +6,7 @@ import { formatError, round2 } from "../utils";
 import { auth } from "@/auth";
 import { prisma } from "@/db/prisma";
 import { convertToPlainObject } from "../utils";
-import { cartItemSchema, insertCartSchema } from "@/schema/validators";
+import { cartItemSchema, insertCartSchema } from "@/tests/schema/validators";
 import { revalidatePath } from "next/cache";
 import { Prisma } from "@prisma/client";
 

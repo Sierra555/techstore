@@ -2,7 +2,7 @@
 
 import { useToast } from "@/hooks/use-toast";
 import { shippingAddressDefaultvalues } from "@/lib/constansts";
-import { shippingAddressSchema } from "@/schema/validators";
+import { shippingAddressSchema } from "@/tests/schema/validators";
 import { ShippingAddress } from "@/types";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
