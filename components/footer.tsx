@@ -8,6 +8,7 @@ const Footer = () => {
         <div className="flex-center p-5">
             {currentYear} {APP_NAME}. All Rights Reserved
         </div>
+        <p className="text-sm text-center">This project was created for learning purposes only and is not an actual online store.</p>
     </footer>
   );
 };
