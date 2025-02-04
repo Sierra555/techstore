@@ -8,6 +8,7 @@ import { getMyCart } from '@/lib/actions/cart.actions';
 import { auth } from '@/auth';
 import ReviewList from './review-list';
 import Rating from '@/components/shared/product/rating';
+import ShowPrice from '@/components/shared/product/show-price';
 
 type ProductPageParam = {
     params: Promise<{slug: string}>
@@ -39,7 +40,7 @@ const ProductPage = async ({ params } : ProductPageParam) => {
                       <Rating value={Number(product.rating)} />
                       <p>{product.numReviews} reviews</p>
                       <div className="flex flex-col gap-3 sm:flex-row sm:items:center">
-                          <p>${product.price}</p>
+                        <ShowPrice product={product} />
                       </div>
                   </div>
                   <div className="mt-10">
@@ -52,7 +53,7 @@ const ProductPage = async ({ params } : ProductPageParam) => {
                       <CardContent className='p-4'>
                           <div className="mb-2 flex gap-3 justify-between">
                               <p>Price</p>
-                              <p>${product.price}</p>
+                              <ShowPrice product={product} />
                           </div>
                           <div className="mb-2 flex gap-3 justify-between">
                               <p>Stock</p>
